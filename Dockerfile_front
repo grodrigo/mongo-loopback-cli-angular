@@ -1,0 +1,16 @@
+FROM node:10-alpine
+
+WORKDIR /usr/src/app
+COPY front/package.json .
+
+RUN yarn install
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+
+
+#----------------------
+# usefull npm notes
+#RUN npm install
+#RUN npm install -g @angular/cli@6.0.3 --unsafe-perm
+#RUN npm install -g @angular/latest --unsafe-perm
+#RUN npm install -g @angular/cli

@@ -1,0 +1,56 @@
+version: '3.6'
+
+services:
+
+  front:
+    container_name: front
+    depends_on:
+      - back
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    volumes:
+      - './front:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '4200:4200'
+#    environment:
+#      - API_URL=api:8080
+#    command: "npm run start"
+    command: "ng serve  --host 0.0.0.0 --port 4200"
+#    command: "npm start"
+#    expose:
+#      - "4200"
+
+  back:
+    container_name: back
+    depends_on:
+      - mongo
+    build:
+      context: .
+      dockerfile: Dockerfile_back
+    volumes:
+      - './back:/usr/src/app'
+      - './config/back/server/model-config.json:/usr/src/app/server/model-config.json'
+      - './config/back/server/datasources.json:/usr/src/app/server/datasources.json'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    command: "node ."
+    expose:
+      - "3000"
+    environment:
+      - COMPOSE_HTTP_TIMEOUT=200
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+    - "27016:27017"
+    volumes:
+    - data-volume:/data/db
+
+#volumes:
+#   front:
+volumes:
+  data-volume:

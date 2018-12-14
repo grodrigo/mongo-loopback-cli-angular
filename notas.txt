@@ -1,0 +1,26 @@
+
+Developing RESTful APIs With Loopback
+https://dzone.com/articles/developing-restful-apis-with-loopback-1
+
+strongloop/loopback-connector-mongodb
+https://github.com/strongloop/loopback-connector-mongodb
+
+Why the Heck do I get Connection reset by peer when Containerizing my Angular 4 application
+http://imaginativethinking.ca/heck-get-connection-reset-peer-containerizing-angular-4-application/
+
+
+https://github.com/gbosetti/demo-frontend
+https://github.com/gbosetti/demo-backend
+https://github.com/gbosetti/todo-list-mongo-backend
+https://github.com/gbosetti/todo-list-loopback-backend
+https://github.com/gbosetti/todo-list-with-angular-6
+https://github.com/gbosetti/todolist-integrated-backend-and-frontend/tree/virtual-db-and-cypress
+
+
+No se usaron pero por ahi tienen cosas interesantes:
+https://github.com/artisin/loopback-mysql-docker-boilerplate/blob/master/dev-images/loopback/Dockerfile
+https://github.com/fmauz/loopback-cli
+
+https://github.com/fmauz/loopback-cli
+https://blog.codeship.com/using-docker-compose-for-nodejs-development/
+https://medium.com/statuscode/dockerising-a-node-js-and-mongodb-app-d22047e2806f
