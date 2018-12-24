@@ -1,4 +1,4 @@
-# docker-compose integration of mongodb, loobpack api backend, and angular js
+# docker-compose integration of mongodb, loobpack api backend, and angular js with node:10-alpine
 
 This repository use:
 https://github.com/gbosetti/todo-list-loopback-backend
@@ -13,8 +13,6 @@ back/server/boot/default-user.js
 > pass: nimda
 
 You can put whatever in back or in front guided by this roadmap.
-The image used in the backend is node instead of node:alpine due to loopback python's dependeny on install.
-It's easier to install it with a complete image of node instead other workarounds or multistage builds.
 
 ---------------------
 ## URLs

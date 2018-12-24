@@ -1,12 +1,13 @@
-FROM node
-# alpine doesn't have python so you cant install loopback easily
+FROM node:10-alpine
 
 WORKDIR /usr/src/app
 COPY back/package.json .
 
+RUN apk --no-cache --virtual build-dependencies add \
+    python
+
 # Install globally in container -> we use yarn to avoid a permission headach
 RUN yarn && yarn add loopback-connector-mongodb && yarn global add loopback-cli
-
 
 #----------------------
 # npm way
