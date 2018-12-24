@@ -3,46 +3,17 @@
 module.exports = function(app) {
     var User = app.models.User;
 
-//    app.dataSources.mongo.automigrate('User',function(err)
-
-    var count = User.count({username: 'luke'}, function(err, count) {
-        console.log(count); // 2081
-    });
-    console.log('-------------------');
-    console.log('Count: '+count);
-    console.log('-------------------');
-    console.log('xxxxxxxxxxxxxxx');
-
-    var users = User.find({filter: {limit: 10}}, function(users){
-        console.log(users);
-    });
-
-    users = User.findOne({
-      filter: {
-        where: {
-          email: 'luke@a.test'
+    var count = User.count({username: 'admin'}, function(err, count) {
+        if(count == 0){
+            console.log('admin no existe aún');
+        }else {
+            console.log('admin ya existe');
         }
-      }
     });
 
-//    users = User.findById({
-//      id: 0
-//    });
-
-
-    User.create({username: 'luke', email: 'luke@a.test', password: '1234'}, function(err, userInstance) {
+    User.create({username: 'admin', email: 'bob@projects.com', password: 'nimda'}, function(err, userInstance) {
         console.log(userInstance);
-
+        console.log('luego de create');
   });
 
 }
-/*
-docker exec -it mongodb sh
-en container:
-mongo
-show dbs
-use admin
-show collection
-db.User.find()
-
-*/

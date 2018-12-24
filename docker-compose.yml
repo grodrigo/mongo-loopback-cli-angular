@@ -11,16 +11,11 @@ services:
       dockerfile: Dockerfile_front
     volumes:
       - './front:/usr/src/app'
+      - './config/front/src/environments/environment.ts:/usr/src/app/src/environments/environment.ts'
       - '/usr/src/app/node_modules'
     ports:
       - '4200:4200'
-#    environment:
-#      - API_URL=api:8080
-#    command: "npm run start"
-    command: "ng serve  --host 0.0.0.0 --port 4200"
-#    command: "npm start"
-#    expose:
-#      - "4200"
+    command: "ng serve  --host 0.0.0.0 --port 4200 --disable-host-check"
 
   back:
     container_name: back
@@ -33,12 +28,11 @@ services:
       - './back:/usr/src/app'
       - './config/back/server/model-config.json:/usr/src/app/server/model-config.json'
       - './config/back/server/datasources.json:/usr/src/app/server/datasources.json'
+      - './config/back/server/boot/default-user.js:/usr/src/app/server/boot/default-user.js'
       - '/usr/src/app/node_modules'
     ports:
       - '3000:3000'
-    command: "node ."
-    expose:
-      - "3000"
+    command: bash -c "sleep 5; node ."
     environment:
       - COMPOSE_HTTP_TIMEOUT=200
 
@@ -50,7 +44,5 @@ services:
     volumes:
     - data-volume:/data/db
 
-#volumes:
-#   front:
 volumes:
   data-volume:
